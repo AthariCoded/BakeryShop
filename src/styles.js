@@ -15,6 +15,15 @@ export const Description = styled.h4`
   text-align: center;
 `;
 
+export const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
+
 export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
