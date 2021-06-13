@@ -27,7 +27,9 @@ function App() {
     <div>
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
-        <ThemeButton onClick={toggleTheme}>Dark mode</ThemeButton>
+        <ThemeButton onClick={toggleTheme}>
+          {currentTheme === "light" ? "Dark" : "Light"} mode
+        </ThemeButton>
         <Home />
         <ProductList />
       </ThemeProvider>

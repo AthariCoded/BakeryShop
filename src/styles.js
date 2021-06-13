@@ -24,6 +24,13 @@ export const ThemeButton = styled.button`
   color: ${(props) => props.theme.backgroundColor};
 `;
 
+export const SearchBarStyled = styled.input`
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+`;
+
 export const ShopImage = styled.img`
   display: block;
   margin-left: auto;
