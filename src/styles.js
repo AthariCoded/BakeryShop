@@ -15,6 +15,20 @@ export const Description = styled.h4`
   text-align: center;
 `;
 
+export const DetailWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  img {
+    width: 40%;
+    float: left;
+  }
+  p {
+    vertical-align: middle;
+  }
+`;
+
 export const ThemeButton = styled.button`
   font-size: 1em;
   margin: 1.25em;

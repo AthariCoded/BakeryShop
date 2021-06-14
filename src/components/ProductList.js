@@ -4,19 +4,18 @@ import { ListWrapper } from "../styles";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 
-const ProductList = () => {
-  const [query, setQuery] = useState();
+const ProductList = (props) => {
+  const [query, setQuery] = useState("");
 
   const filterProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(query)
+    product.name.toLowerCase().includes(query.toLocaleLowerCase())
   );
 
   const productList = filterProducts.map((product) => (
     <ProductItem
-      name={product.name}
-      price={product.price}
-      image={product.image}
+      product={product}
       key={product.id}
+      setProduct={props.setProduct}
     />
   ));
   return (
