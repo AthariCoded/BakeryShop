@@ -28,7 +28,7 @@ function App() {
 
   const setView = () => {
     return product ? (
-      <ProductDetail product={product} />
+      <ProductDetail product={product} setProduct={setProduct} />
     ) : (
       <ProductList setProduct={setProduct} />
     );
