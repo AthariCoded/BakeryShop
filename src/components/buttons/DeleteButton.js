@@ -5,6 +5,7 @@ const DeleteButton = (props) => {
     props.productDelete(props.productId);
     props.setProduct(null);
   };
+
   return <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>;
 };
 
