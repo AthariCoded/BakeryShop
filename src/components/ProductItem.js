@@ -1,4 +1,5 @@
 import { ProductWrapper } from "../styles";
+import DeleteButton from "./buttons/DeleteButton";
 
 const ProductItem = (props) => {
   return (
@@ -10,6 +11,11 @@ const ProductItem = (props) => {
       />
       <p> {props.product.name}</p>
       <p className="product-price"> {props.product.price} KD</p>
+      <DeleteButton
+        productDelete={props.productDelete}
+        productId={props.product.id}
+        setProduct={props.setProduct}
+      />
     </ProductWrapper>
   );
 };

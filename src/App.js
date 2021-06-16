@@ -10,16 +10,26 @@ const theme = {
   light: {
     mainColor: "grey",
     backgroundColor: "MistyRose",
+    red: "red",
   },
   dark: {
     mainColor: "MistyRose",
     backgroundColor: "grey",
+    red: "red",
   },
 };
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [product, setProduct] = useState(null);
+  const [_products, setProducts] = useState(products);
+
+  const productDelete = (productId) => {
+    const updatedProducts = _products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(updatedProducts);
+  };
 
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
@@ -28,9 +38,17 @@ function App() {
 
   const setView = () => {
     return product ? (
-      <ProductDetail product={product} setProduct={setProduct} />
+      <ProductDetail
+        product={product}
+        setProduct={setProduct}
+        productDelete={productDelete}
+      />
     ) : (
-      <ProductList setProduct={setProduct} />
+      <ProductList
+        setProduct={setProduct}
+        products={_products}
+        productDelete={productDelete}
+      />
     );
   };
 

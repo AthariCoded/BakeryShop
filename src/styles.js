@@ -71,3 +71,7 @@ export const ProductWrapper = styled.div`
     }
   }
 `;
+
+export const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+`;
