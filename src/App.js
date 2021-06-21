@@ -1,10 +1,13 @@
 import Home from "./Home";
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
-import { GlobalStyle, ThemeButton } from "./styles";
+import { GlobalStyle, ThemeButton, NavLinkStyled } from "./styles";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 import products from "./products";
+//Libraries
+import { Router, Switch } from "react-router";
+import { Link } from "react-router-dom";
 
 const theme = {
   light: {
