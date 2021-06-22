@@ -1,13 +1,13 @@
 import Home from "./Home";
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
-import { GlobalStyle, ThemeButton, NavLinkStyled } from "./styles";
+import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 import products from "./products";
 //Libraries
-import { Router, Switch } from "react-router";
-import { Link } from "react-router-dom";
+import { Route, Switch } from "react-router";
+import NavBar from "./components/NavBar";
 
 const theme = {
   light: {
@@ -24,7 +24,6 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [product, setProduct] = useState(null);
   const [_products, setProducts] = useState(products);
 
   const productDelete = (productId) => {
@@ -39,31 +38,28 @@ function App() {
     else setCurrentTheme("light");
   };
 
-  const setView = () => {
-    return product ? (
-      <ProductDetail
-        product={product}
-        setProduct={setProduct}
-        productDelete={productDelete}
-      />
-    ) : (
-      <ProductList
-        setProduct={setProduct}
-        products={_products}
-        productDelete={productDelete}
-      />
-    );
-  };
-
   return (
     <div>
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
-        <ThemeButton onClick={toggleTheme}>
-          {currentTheme === "light" ? "Dark" : "Light"} mode
-        </ThemeButton>
-        <Home />
-        {setView()}
+        <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
+
+        <Switch>
+          <Route path="/products/:productSlug">
+            <ProductDetail
+              products={_products}
+              // setProduct={setProduct}
+              productDelete={productDelete}
+            />
+          </Route>
+
+          <Route path="/products">
+            <ProductList products={_products} productDelete={productDelete} />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
       </ThemeProvider>
     </div>
   );

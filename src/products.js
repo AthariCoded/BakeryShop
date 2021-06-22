@@ -2,6 +2,7 @@ const products = [
   {
     id: 1,
     name: "Blueberry Muffin",
+    slug: "blueberry-muffin",
     price: 5,
     description: "freshly baked muffins. Calories: 200 Kcal",
     image:
@@ -10,6 +11,7 @@ const products = [
   {
     id: 2,
     name: "Pecan Pie",
+    slug: "pecan-pie",
     price: 12,
     description: "freshly baked pie. Calories: 400 Kcal",
     image:
@@ -18,6 +20,7 @@ const products = [
   {
     id: 3,
     name: "Macroons",
+    slug: "macroons",
     price: 10,
     description: "original macroons. Calories: 300 Kcal",
     image:
@@ -26,6 +29,7 @@ const products = [
   {
     id: 4,
     name: "Scones",
+    slug: "scones",
     price: 15,
     description: "British scones. Calories: 550 Kcal",
     image:
