@@ -24,14 +24,6 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_products, setProducts] = useState(products);
-
-  const productDelete = (productId) => {
-    const updatedProducts = _products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(updatedProducts);
-  };
 
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
@@ -46,15 +38,11 @@ function App() {
 
         <Switch>
           <Route path="/products/:productSlug">
-            <ProductDetail
-              products={_products}
-              // setProduct={setProduct}
-              productDelete={productDelete}
-            />
+            <ProductDetail />
           </Route>
 
           <Route path="/products">
-            <ProductList products={_products} productDelete={productDelete} />
+            <ProductList />
           </Route>
           <Route exact path="/">
             <Home />
