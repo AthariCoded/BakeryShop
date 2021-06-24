@@ -1,11 +1,30 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
+import { AiFillPlusCircle } from "react-icons/ai";
+
 export const GlobalStyle = createGlobalStyle`
     body {
         background-color: ${(props) => props.theme.backgroundColor};
         color: ${(props) => props.theme.mainColor};
     }
+`;
+export const AiFillPlusCircleStyled = styled(AiFillPlusCircle)`
+  color: ${(props) => props.theme.mainColor};
+  margin-left: 84%;
+`;
+
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.mainColor};
+  width: 100px;
+  padding: 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+  &:hover {
+    color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
 `;
 
 export const NavStyled = styled.nav`
