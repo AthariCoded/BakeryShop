@@ -9,12 +9,16 @@ import productStore from "../../stores/productStore";
 //import { styles } from "ansi-colors";
 
 const ProductModal = (props) => {
-  const [product, setProduct] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+  const [product, setProduct] = useState(
+    props.oldProduct
+      ? props.oldProduct
+      : {
+          name: "",
+          price: 0,
+          description: "",
+          image: "",
+        }
+  );
 
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
@@ -22,7 +26,8 @@ const ProductModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    productStore.productCreate(product);
+    if (props.oldProduct) productStore.productUpdate(product);
+    else productStore.productCreate(product);
     props.closeModal();
   };
   return (
@@ -41,6 +46,7 @@ const ProductModal = (props) => {
                 type="text"
                 onChange={handleChange}
                 name="name"
+                value={product.name}
               />
             </div>
             <div className="col-6">
@@ -51,6 +57,7 @@ const ProductModal = (props) => {
                 min="1"
                 onChange={handleChange}
                 name="price"
+                value={product.price}
               />
             </div>
           </div>
@@ -61,6 +68,7 @@ const ProductModal = (props) => {
               type="text"
               onChange={handleChange}
               name="description"
+              value={product.description}
             />
           </div>
           <div className="form-group">
@@ -70,9 +78,12 @@ const ProductModal = (props) => {
               type="text"
               onChange={handleChange}
               name="image"
+              value={product.image}
             />
           </div>
-          <CreateButtonStyled>Add</CreateButtonStyled>
+          <CreateButtonStyled>
+            {props.oldProduct ? "Update" : "Add"}
+          </CreateButtonStyled>
         </form>
       </Modal>
     </div>

@@ -1,6 +1,8 @@
 import { ProductWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 const ProductItem = (props) => {
   return (
@@ -10,9 +12,10 @@ const ProductItem = (props) => {
       </Link>
       <p> {props.product.name}</p>
       <p className="product-price"> {props.product.price} KD</p>
+      <UpdateButton product={props.product} />
       <DeleteButton productId={props.product.id} />
     </ProductWrapper>
   );
 };
 
-export default ProductItem;
+export default observer(ProductItem);
