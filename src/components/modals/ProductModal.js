@@ -10,6 +10,13 @@ import productStore from "../../stores/productStore";
 
 const ProductModal = (props) => {
   const [product, setProduct] = useState(
+    props.oldProduct || {
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+    /*
     props.oldProduct
       ? props.oldProduct
       : {
@@ -18,6 +25,7 @@ const ProductModal = (props) => {
           description: "",
           image: "",
         }
+        */
   );
 
   const handleChange = (event) => {

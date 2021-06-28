@@ -4,20 +4,19 @@ import ProductDetail from "./components/ProductDetail";
 import { GlobalStyle } from "./styles";
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
-import products from "./products";
 //Libraries
 import { Route, Switch } from "react-router";
 import NavBar from "./components/NavBar";
 
 const theme = {
   light: {
-    mainColor: "grey",
-    backgroundColor: "MistyRose",
+    mainColor: "#586f6b",
+    backgroundColor: "#cfc0bd",
     red: "red",
   },
   dark: {
-    mainColor: "MistyRose",
-    backgroundColor: "grey",
+    mainColor: "#cfc0bd",
+    backgroundColor: "#586f6b",
     red: "red",
   },
 };

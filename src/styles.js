@@ -50,6 +50,7 @@ export const NavLinkStyled = styled(NavLink)`
 `;
 
 export const Title = styled.h1`
+  font-family: Poppins, arial, sans-serif;
   text-align: center;
 `;
 
