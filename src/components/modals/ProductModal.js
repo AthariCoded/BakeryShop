@@ -32,6 +32,10 @@ const ProductModal = (props) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
 
+  const handleImage = (event) => {
+    setProduct({ ...product, image: event.target.files[0] });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (props.oldProduct) productStore.productUpdate(product);
@@ -83,10 +87,9 @@ const ProductModal = (props) => {
             <label>Image</label>
             <input
               className="form-control"
-              type="text"
-              onChange={handleChange}
+              type="file"
+              onChange={handleImage}
               name="image"
-              value={product.image}
             />
           </div>
           <CreateButtonStyled>

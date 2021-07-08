@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
-import slugify from "react-slugify";
 
 class ProductStore {
   products = [];
@@ -60,9 +59,12 @@ class ProductStore {
   //-----------------------------------------\\
   productCreate = async (newProduct) => {
     try {
+      const formData = new FormData();
+      for (const key in newProduct) formData.append(key, newProduct[key]);
+
       const response = await axios.post(
         "http://localhost:8000/products",
-        newProduct
+        formData
       );
       this.products.push(response.data);
     } catch (error) {
@@ -72,21 +74,18 @@ class ProductStore {
   //-----------------------------------------\\
   productUpdate = async (updateProduct) => {
     try {
-      await axios.put(
+      const formData = new FormData();
+      for (const key in updateProduct) formData.append(key, updateProduct[key]);
+
+      const respose = await axios.put(
         `http://localhost:8000/products/${updateProduct.id}`,
-        updateProduct
-      );
-      const product = this.products.find(
-        (product) => product.id === updateProduct.id
+        formData
       );
 
-      for (const key in updateProduct) product[key] = updateProduct[key];
-      /*
-      product.name = updateProduct.name;
-      product.price = updateProduct.price;
-      product.description = updateProduct.description;
-      product.image = updateProduct.image;
-      product.slug = slugify(updateProduct.name); */
+      const product = this.products.find(
+        (product) => product.id === respose.data.id
+      );
+      for (const key in product) product[key] = respose.data[key];
     } catch (error) {
       console.error(error);
     }

@@ -7,6 +7,7 @@ import { useState } from "react";
 //Libraries
 import { Route, Switch } from "react-router";
 import NavBar from "./components/NavBar";
+import BakeryList from "./components/BakeryList";
 
 const theme = {
   light: {
@@ -42,6 +43,9 @@ function App() {
 
           <Route path="/products">
             <ProductList />
+          </Route>
+          <Route path="/bakeries">
+            <BakeryList />
           </Route>
           <Route exact path="/">
             <Home />
