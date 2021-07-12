@@ -1,4 +1,4 @@
-import { Title, Description, ShopImage } from "./styles";
+import { Title, Description, ShopImage } from "../styles";
 
 function Home() {
   return (

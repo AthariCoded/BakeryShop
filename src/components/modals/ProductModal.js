@@ -15,8 +15,8 @@ const ProductModal = (props) => {
       price: 0,
       description: "",
       image: "",
-    }
-    /*
+    });
+     /*
     props.oldProduct
       ? props.oldProduct
       : {
@@ -26,8 +26,6 @@ const ProductModal = (props) => {
           image: "",
         }
         */
-  );
-
   const handleChange = (event) => {
     setProduct({ ...product, [event.target.name]: event.target.value });
   };
@@ -39,7 +37,7 @@ const ProductModal = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (props.oldProduct) productStore.productUpdate(product);
-    else productStore.productCreate(product);
+    else productStore.productCreate(product, props.bakery);
     props.closeModal();
   };
   return (
